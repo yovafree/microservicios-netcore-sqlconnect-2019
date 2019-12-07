@@ -3,12 +3,11 @@ services:
     webclient:
         build: 
             context: ./webclient
-            args:
         image: demo03-webclient-app:latest
         container_name: demo03-webclient-app
         hostname: demo03-webclient-app
         ports:
-            - "80:80"
+            - "80:90"
         depends_on:
             - api
     api:
