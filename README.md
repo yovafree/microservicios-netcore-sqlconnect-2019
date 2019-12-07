@@ -7,6 +7,7 @@
 * Conocimientos básicos de Docker
 
 ## **Demos**  
-* [01 - Microservicio - CRUD Clientes](demo01_clientes)
-* [02 - Creando contenedor de microservicio con .NET Core 3](demo02_parametros_docker)
-* [03 - API Gateway de Microservicios - API + Cliente Web](demo03_api_cliente_web)
+* [01 - API Rest con Conexión a Base de Datos](demo01)
+* [02 - Dockerizando API Rest](demo02)
+* [03 - API Rest + Cliente Web](demo03)
+* [04 - API Gateway de Microservicios - API + Cliente Web](demo04)
