@@ -1,9 +1,14 @@
 # SQL Connect 2019
-## [Microservicios con .NET Core 3 y cómo dockerizarlos](https://www.pass.org/summit/2019/Learn/SessionDetails.aspx?name=working-with-sql-server-containers-to-build-database-solutions&sid=92481)
+## [Microservicios con .NET Core 3 y cómo Dockerizarlos](https://www.pass.org/summit/2019/Learn/SessionDetails.aspx?name=working-with-sql-server-containers-to-build-database-solutions&sid=92481)
 
-Containers are no longer the future, they are the present and are here to change the way DBAs used to think about building SQL Server solutions. Spending long periods of time installing, configuring, and preparing databases and SQL Server instances is no longer the case with containers. 
+El aumento de las demandas comerciales en la actualizadad, nos obliga a desarrollar proyectos de software
+muy grandes y complejos que conllevan un tiempo considerable en ser construidos, desplegados y mantenidos. 
+Para reducir esta brecha, las organizaciones se están moviendo hacia el desarrollo 
+de Microservicios en Contenedores que les permita un proceso de integración y despliegue más agil.
 
-In this session, you will learn the basic and advanced methods to deploy a SQL Server solution using containers in minutes. We will explore the options and tools (open source) we have available when working with SQL Server running on Docker containers through real world scenarios, like backing up\restoring databases, high availability, version upgrades, and the most important portability between cross platforms.
+En esta breve sesión conoceremos nuevas funcionalidades que nos trae .NET Core en
+su versión 3, crearemos unos cuantos Microservicios API Rest para Dockerizarlos 
+y finalmente una pequeña demostración para visualizar su funcionamiento.
 
 ## **Conocimientos previos**  
 * C#
