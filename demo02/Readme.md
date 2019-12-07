@@ -2,11 +2,12 @@
 ## Dockerizando .NET Core API Rest
 
 ## **Requisitos**  
-* Contenedor de la Base de Datos "hr-database:4.0" proporcionado por [Carlos Robles](https://github.com/dbamaster)
+Contenedor de la Base de Datos "hr-database:4.0" proporcionado por [Carlos Robles](https://github.com/dbamaster)
     
     docker run --name sql.hr --hostname sql.hr --publish 1433:1433 --detach crobles10/hr-database:4.0
+	docker run --name sql.hr --network=default --hostname sql.hr --publish 1433:1433 --detach crobles10/summit_dev:3.0
 
-* Correr los siguientes comandos con docker para crear el contenedor:
+Correr el siguiente comando con docker para crear el contenedor de la base de datos:
 
 	docker build -t demo02:latest .
 

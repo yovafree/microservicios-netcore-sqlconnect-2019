@@ -1,26 +1,23 @@
 version: "3.4"
 services:
-    frontend:
+    webclient:
         build: 
-            context: ./frontend
+            context: ./webclient
             args:
-                - API_URL=52.160.67.118
-                #- API_URL=localhost
-        #image: demo-front-app:latest
-        container_name: demo-front
-        hostname: demo-front
+        image: demo03-webclient-app:latest
+        container_name: demo03-webclient-app
+        hostname: demo03-webclient-app
         ports:
-            - "90:80"
+            - "80:80"
         depends_on:
-            - backend
-    backend:
+            - api
+    api:
         environment:
-            - ASPNETCORE_ENVIRONMENT=DockerAdmin
-            #- ASPNETCORE_ENVIRONMENT=DockerWebApp
-        build: ./backend
-        #image: demo-back-app:latest
-        container_name: demo-back
-        hostname: demo-back
+            - ASPNETCORE_ENVIRONMENT=Development
+        build: ./api
+        image: demo03-api-app:latest
+        container_name: demo03-api
+        hostname: demo03-api
         ports:
             - "5000:80"
             - "44349:443"
