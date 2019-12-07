@@ -1,0 +1,64 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\erwin\\ejemplo-docker\\microservicios-netcore-sqlconnect-2019\\demo01_clientes\\demo01_clientes.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\erwin\\ejemplo-docker\\microservicios-netcore-sqlconnect-2019\\demo01_clientes\\demo01_clientes.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\erwin\\ejemplo-docker\\microservicios-netcore-sqlconnect-2019\\demo01_clientes\\demo01_clientes.csproj",
+        "projectName": "demo01_clientes",
+        "projectPath": "C:\\Users\\erwin\\ejemplo-docker\\microservicios-netcore-sqlconnect-2019\\demo01_clientes\\demo01_clientes.csproj",
+        "packagesPath": "C:\\Users\\erwin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\erwin\\ejemplo-docker\\microservicios-netcore-sqlconnect-2019\\demo01_clientes\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\erwin\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.0": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
