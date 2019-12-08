@@ -3,18 +3,18 @@ services:
     webclient:
         build: 
             context: ./webclient
-        image: demo03-webclient-app:latest
-        container_name: demo03-webclient-app
-        hostname: demo03-webclient-app
+        #image: demo03-webclient-app:latest
+        container_name: demo03-web
+        hostname: demo03-web
         ports:
-            - "80:90"
+            - "80:8080"
         depends_on:
             - api
     api:
         environment:
             - ASPNETCORE_ENVIRONMENT=Development
         build: ./api
-        image: demo03-api-app:latest
+        #image: demo03-api-app:latest
         container_name: demo03-api
         hostname: demo03-api
         ports:
