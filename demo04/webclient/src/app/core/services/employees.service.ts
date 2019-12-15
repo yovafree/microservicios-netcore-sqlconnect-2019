@@ -12,22 +12,22 @@ export class EmployeesService {
   constructor(private httpClient: HttpClient,@Inject(APP_CONFIG)  public config:AppConfig) { }
 
   public getAll(): Observable<any>{
-    return this.httpClient.get<any>(`${this.config.apiEndpoint}/employees/`);
+    return this.httpClient.get<any>(`${this.config.apiEndpoint}employees/api/employees/`);
   }
 
   public get(id: number): Observable<Employees>{
-    return this.httpClient.get<Employees>(`${this.config.apiEndpoint}/employees/${id}`);
+    return this.httpClient.get<Employees>(`${this.config.apiEndpoint}employees/api/employees/${id}`);
   }
 
   save(item: Employees): Observable<Employees> {
-    return this.httpClient.post<Employees>(`${this.config.apiEndpoint}/employees/` ,item);
+    return this.httpClient.post<Employees>(`${this.config.apiEndpoint}employees/api/employees/` ,item);
   }
   
   delete(id: number): Observable<any> {
-    return this.httpClient.delete(`${this.config.apiEndpoint}/employees/${id}`);
+    return this.httpClient.delete(`${this.config.apiEndpoint}employees/api/employees/${id}`);
   }
   
   update(id:number, item: Employees): Observable<Employees> {
-    return this.httpClient.put<Employees>(`${this.config.apiEndpoint}/employees/${id}`,item);
+    return this.httpClient.put<Employees>(`${this.config.apiEndpoint}employees/api/employees/${id}`,item);
   }
 }

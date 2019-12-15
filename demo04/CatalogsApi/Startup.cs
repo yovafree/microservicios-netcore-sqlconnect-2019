@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 using System.Threading.Tasks;
 using Consul;
 using Microsoft.AspNetCore.Builder;
@@ -9,6 +11,7 @@ using Microsoft.AspNetCore.Hosting.Server.Features;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -29,10 +32,14 @@ namespace CatalogsApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddConsulConfig(Configuration);
+            services.AddDbContext<DemoContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("DemoContext")));
+            services.AddCors();
             services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        [Obsolete]
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -40,11 +47,23 @@ namespace CatalogsApi
                 app.UseDeveloperExceptionPage();
             }
 
+            var configuration = new ConfigurationBuilder()
+            .AddJsonFile("appsettings.json")
+            .AddJsonFile($"appsettings.{env.EnvironmentName}.json")
+            .AddEnvironmentVariables()
+            .Build();
+            
             app.UseHttpsRedirection();
-
+            app.UseConsul(env.EnvironmentName); 
             app.UseRouting();
 
-            app.UseAuthorization();
+            app.UseCors(builder => 
+            builder.WithOrigins("http://localhost:4200") 
+            .AllowAnyOrigin() 
+            .AllowAnyHeader() 
+            .AllowAnyMethod()); 
+            
+            //app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
@@ -67,7 +86,7 @@ namespace CatalogsApi
         }
 
         [Obsolete]
-        public static IApplicationBuilder UseConsul(this IApplicationBuilder app)  
+        public static IApplicationBuilder UseConsul(this IApplicationBuilder app, string EnvironmentName)  
         {  
             var consulClient = app.ApplicationServices.GetRequiredService<IConsulClient>();  
             var logger = app.ApplicationServices.GetRequiredService<ILoggerFactory>().CreateLogger("AppExtensions");  
@@ -77,10 +96,20 @@ namespace CatalogsApi
       
             var addresses = features.Get<IServerAddressesFeature>();  
             var address = addresses.Addresses.First();  
-      
-            Console.WriteLine($"address={address}");  
-      
-            var uri = new Uri(address);  
+            
+            var name = Dns.GetHostName(); // get container id
+            var ip = Dns.GetHostEntry(name).AddressList.FirstOrDefault(x => x.AddressFamily == AddressFamily.InterNetwork);
+            string ipStr = "";
+            if (EnvironmentName == "Production"){
+                Console.WriteLine($"address={ip}"); 
+                ipStr = "http://" + ip.ToString(); 
+            }else{
+                Console.WriteLine($"address={address}"); 
+                ipStr = address; 
+            }
+
+            var uri = new Uri(ipStr);  
+
             var registration = new AgentServiceRegistration()  
             {  
                 ID = $"catalogs-api-{uri.Port}",  

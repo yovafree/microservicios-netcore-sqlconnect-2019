@@ -10,6 +10,6 @@ export class DependentsService {
   constructor(private httpClient: HttpClient,@Inject(APP_CONFIG)  public config:AppConfig) { }
 
   public getAll(): Observable<any>{
-    return this.httpClient.get<any>(`${this.config.apiEndpoint}/dependents/`);
+    return this.httpClient.get<any>(`${this.config.apiEndpoint}catalogs/api/dependents/`);
   }
 }
