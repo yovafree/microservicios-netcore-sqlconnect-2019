@@ -2,9 +2,15 @@
 ## .NET Core - API Rest con conexión a Base de datos SQL Server
 
 ## **Requisitos**  
-Contenedor de la Base de Datos "hr-database:4.0" proporcionado por [Carlos Robles](https://github.com/dbamaster)
+Contenedor de la Base de Datos "summit_dev:3.0" proporcionado por [Carlos Robles](https://github.com/dbamaster)
     
-    docker run --name sql.hr --hostname sql.hr --publish 1433:1433 --detach crobles10/hr-database:4.0
+    docker run --name sql.hr --network=default --hostname sql.hr --publish 1433:1433 --detach crobles10/summit_dev:3.0
+
+## Revisión
+
+Ingresar en el navegador web a la ruta:
+
+	http://localhost:5000/api/countries
 
 ## Librerías instaladas en el proyecto.
 
